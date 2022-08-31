@@ -1,0 +1,30 @@
+//// Top-level build file where you can add configuration options common to all sub-projects/modules.
+//plugins {
+//    id 'com.android.application' version '7.2.1' apply false
+//    id 'com.android.library' version '7.2.1' apply false
+//}
+//
+//task clean(type: Delete) {
+//    delete rootProject.buildDir
+//}
+
+buildscript {
+    repositories {
+        //要基于jitpack发布依赖必须加以下仓库
+        mavenCentral()
+        maven { url 'https://jitpack.io' }
+        google()
+    }
+
+    dependencies {
+        classpath 'com.android.tools.build:gradle:7.1.2'
+    }
+
+    allprojects {
+        repositories {
+            mavenCentral()
+            maven { url 'https://jitpack.io' }
+            google()
+        }
+    }
+}
