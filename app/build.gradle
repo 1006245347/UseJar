@@ -48,5 +48,5 @@ dependencies {
     implementation project(':litesdk')
 
     //远程jitpack依赖测试  两种依赖二选一用以测试
-//    implementation ''
+//    implementation 'com.github.1006245347:UseJar:v0.0.2'
 }

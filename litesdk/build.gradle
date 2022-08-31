@@ -1,5 +1,6 @@
 plugins {
     id 'com.android.library'
+    id 'maven-publish'
 }
 
 android {
@@ -33,4 +34,22 @@ android {
 
 dependencies {
     api files('libs/proguard_ajlib-0.0.2.jar')
+}
+
+//使用命令 ./gradlew publishToMavenLocal 本地校验打包是否成功，会报无该任务，
+//奇怪的是有时候又不报错！！！，在jitpack的打包报错日志也出现了，加以下代码后重新提交代码，
+//再打标签后远程再提交，记得提高版本，我试了不同代码重新打相同的标签版本v0.0.2,也无法
+//成功打包依赖，在jitpack lookup中看小绿书图标 status:ok才正常，第一做搞我打了6次，
+//由于公司外网限制用了代理端口，还有各种奇葩问题。。。记得顶部 id 'maven-publish'
+afterEvaluate {
+    publishing {
+        publications {
+            release(MavenPublication){
+                from components.release
+                groupId = 'com.hwj.litesdk' //随便取
+                artifactId = 'hwj' //随便取
+                version = '0.0.2'
+            }
+        }
+    }
 }
